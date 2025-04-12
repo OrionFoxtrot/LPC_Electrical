@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [FC_Tracker_Ver_0_0.PrjPcb]
+   Generated File[FC_Tracker_Ver_0_0.TXT]
+   Generated File[FC_Tracker_Ver_0_0.DRL]
+   Generated File[FC_Tracker_Ver_0_0.LDP]
+   Generated File[FC_Tracker_Ver_0_0.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 10:59:54 PM On 4/11/2025
