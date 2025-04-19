@@ -1,0 +1,432 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">4/19/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2:42:30 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc" class="file"><acronym title="C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc">C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">32</td></tr>
+</table>
+</td>
+</table><a name="IDP1V2APITQK11ODILCCLMS4T1WFBL4ZZMDFAF02FOXGSDRMWCHUSL"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDM2HGYOUZ5U3CFN1JUKRAGERIZKBSYNAXMUP4UGBI1014LXJKSGZF">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDYLUWMGHCL1XRGLHV4UCH5OTEWOQJ4LOKNH241TCDLJK50CXZO5XH">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNQWIEYCSYSE2BW4SRLRWRBR5KIBT4WD41NHPFTMS40NOK0CCGB2F">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDU2GTCADEG4SIN33RZRM0Q0BXVDDFM1ASEGZWBLSL0BI1KZWPR">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIFTBXDPPQMCYL3USSA00RDPIHFTUMZFWMPD4YXKRE23MPHZIYAJP">Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWF2BFKWJJQ1ED0EODEMPFMIECIVUQBDUT3CF1UCFUEMGNAKA3X3J">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0XSBMNHLRS12IJWKSVKMNF54EHXPL40UYZ0ATWDM4LZY414SCP4">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOKF4JNB4EMCCKVCMRCMAKMZ50LKMWVWFR0J4I3EJPGWE4420MU2F">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLPYPBGZUNCA5DHC0R0JYGAWMGLRJGFXMVQKPGWF0KJ02VBHSGGNJ">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDASLNAHS0LXCENNMXKY0NPNUN2L2RZNVRIXN3GDHTKOOOQT3JNHJF">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">28</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDADMQJO0KXV12DFREWYCOUI4DCGISBWSP3B2JUNELNW2C45423Z5L">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGBFPR2X13N3GMPU3RM00LOGBZH55AJADGXQI5YNVFND4NFP2XSIN">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPZ15DJZDQAMXJQAT2RDY4SB4XOF2LUH4VNQOJXH5Q1WZDQCQEBRE">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFDEEFY4U5IRULBODW1IYQLKK2JZVJBMTKVL5ZXKQ0Q3ID0VPW50">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">32</td>
+</tr>
+</table><br><a name="IDASLNAHS0LXCENNMXKY0NPNUN2L2RZNVRIXN3GDHTKOOOQT3JNHJF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4518.009mil|Location2.Y=4529.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4518.009mil|Location2.Y=4529.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-1(48.758mm,115.294mm) on Top Layer And Pad U1-2(48.758mm,114.507mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2017.989mil|Location2.X=2029.239mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2017.989mil|Location2.X=2029.239mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-10(50.993mm,108.258mm) on Top Layer And Pad U1-11(51.806mm,108.258mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1986.489mil|Location2.X=1997.739mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1986.489mil|Location2.X=1997.739mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-10(50.993mm,108.258mm) on Top Layer And Pad U1-9(50.206mm,108.258mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2049.489mil|Location2.X=2060.739mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2049.489mil|Location2.X=2060.739mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-11(51.806mm,108.258mm) on Top Layer And Pad U1-12(52.594mm,108.258mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2080.989mil|Location2.X=2092.239mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2080.989mil|Location2.X=2092.239mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-12(52.594mm,108.258mm) on Top Layer And Pad U1-13(53.406mm,108.258mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2112.489mil|Location2.X=2123.739mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2112.489mil|Location2.X=2123.739mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-13(53.406mm,108.258mm) on Top Layer And Pad U1-14(54.194mm,108.258mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2143.989mil|Location2.X=2155.239mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2143.989mil|Location2.X=2155.239mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-14(54.194mm,108.258mm) on Top Layer And Pad U1-15(55.007mm,108.258mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2175.489mil|Location2.X=2186.739mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2175.489mil|Location2.X=2186.739mil|Location1.Y=4223.509mil|Location2.Y=4234.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-15(55.007mm,108.258mm) on Top Layer And Pad U1-16(55.794mm,108.258mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4329.009mil|Location2.Y=4340.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4329.009mil|Location2.Y=4340.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-17(57.242mm,109.706mm) on Top Layer And Pad U1-18(57.242mm,110.493mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4360.509mil|Location2.Y=4371.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4360.509mil|Location2.Y=4371.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-18(57.242mm,110.493mm) on Top Layer And Pad U1-19(57.242mm,111.306mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4392.009mil|Location2.Y=4403.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4392.009mil|Location2.Y=4403.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-19(57.242mm,111.306mm) on Top Layer And Pad U1-20(57.242mm,112.094mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4486.509mil|Location2.Y=4497.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4486.509mil|Location2.Y=4497.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-2(48.758mm,114.507mm) on Top Layer And Pad U1-3(48.758mm,113.694mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4423.509mil|Location2.Y=4434.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4423.509mil|Location2.Y=4434.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-20(57.242mm,112.094mm) on Top Layer And Pad U1-21(57.242mm,112.906mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4455.009mil|Location2.Y=4466.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4455.009mil|Location2.Y=4466.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-21(57.242mm,112.906mm) on Top Layer And Pad U1-22(57.242mm,113.694mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4486.509mil|Location2.Y=4497.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4486.509mil|Location2.Y=4497.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-22(57.242mm,113.694mm) on Top Layer And Pad U1-23(57.242mm,114.507mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4518.009mil|Location2.Y=4529.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2280.989mil|Location2.X=2292.239mil|Location1.Y=4518.009mil|Location2.Y=4529.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-23(57.242mm,114.507mm) on Top Layer And Pad U1-24(57.242mm,115.294mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2175.489mil|Location2.X=2186.739mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2175.489mil|Location2.X=2186.739mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-25(55.794mm,116.742mm) on Top Layer And Pad U1-26(55.007mm,116.742mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2143.989mil|Location2.X=2155.239mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2143.989mil|Location2.X=2155.239mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-26(55.007mm,116.742mm) on Top Layer And Pad U1-27(54.194mm,116.742mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2112.489mil|Location2.X=2123.739mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2112.489mil|Location2.X=2123.739mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-27(54.194mm,116.742mm) on Top Layer And Pad U1-28(53.406mm,116.742mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2080.989mil|Location2.X=2092.239mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2080.989mil|Location2.X=2092.239mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-28(53.406mm,116.742mm) on Top Layer And Pad U1-29(52.594mm,116.742mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2049.489mil|Location2.X=2060.739mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2049.489mil|Location2.X=2060.739mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-29(52.594mm,116.742mm) on Top Layer And Pad U1-30(51.806mm,116.742mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4455.009mil|Location2.Y=4466.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4455.009mil|Location2.Y=4466.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-3(48.758mm,113.694mm) on Top Layer And Pad U1-4(48.758mm,112.906mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2017.989mil|Location2.X=2029.239mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2017.989mil|Location2.X=2029.239mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-30(51.806mm,116.742mm) on Top Layer And Pad U1-31(50.993mm,116.742mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1986.489mil|Location2.X=1997.739mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1986.489mil|Location2.X=1997.739mil|Location1.Y=4623.509mil|Location2.Y=4634.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-31(50.993mm,116.742mm) on Top Layer And Pad U1-32(50.206mm,116.742mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4423.509mil|Location2.Y=4434.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4423.509mil|Location2.Y=4434.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-4(48.758mm,112.906mm) on Top Layer And Pad U1-5(48.758mm,112.094mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4392.009mil|Location2.Y=4403.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4392.009mil|Location2.Y=4403.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-5(48.758mm,112.094mm) on Top Layer And Pad U1-6(48.758mm,111.306mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4360.509mil|Location2.Y=4371.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4360.509mil|Location2.Y=4371.759mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.102mm &lt; 0.254mm) Between Pad U1-6(48.758mm,111.306mm) on Top Layer And Pad U1-7(48.758mm,110.493mm) on Top Layer [Top Solder] Mask Sliver [0.102mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4329.009mil|Location2.Y=4340.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1880.989mil|Location2.X=1892.239mil|Location1.Y=4329.009mil|Location2.Y=4340.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.076mm &lt; 0.254mm) Between Pad U1-7(48.758mm,110.493mm) on Top Layer And Pad U1-8(48.758mm,109.706mm) on Top Layer [Top Solder] Mask Sliver [0.076mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDADMQJO0KXV12DFREWYCOUI4DCGISBWSP3B2JUNELNW2C45423Z5L"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1944.989mil|Location2.X=1956.239mil|Location1.Y=4521.509mil|Location2.Y=4532.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1944.989mil|Location2.X=1956.239mil|Location1.Y=4521.509mil|Location2.Y=4532.759mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.144mm &lt; 0.254mm) Between Pad U1-1(48.758mm,115.294mm) on Top Layer And Track (49.444mm,114.786mm)(50.714mm,116.056mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.144mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1940.989mil|Location2.X=1952.239mil|Location1.Y=4513.009mil|Location2.Y=4524.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1940.989mil|Location2.X=1952.239mil|Location1.Y=4513.009mil|Location2.Y=4524.259mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.025mm &lt; 0.254mm) Between Pad U1-2(48.758mm,114.507mm) on Top Layer And Track (49.444mm,114.786mm)(50.714mm,116.056mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.025mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1991.489mil|Location2.X=2002.739mil|Location1.Y=4563.509mil|Location2.Y=4574.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1991.489mil|Location2.X=2002.739mil|Location1.Y=4563.509mil|Location2.Y=4574.759mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.025mm &lt; 0.254mm) Between Pad U1-31(50.993mm,116.742mm) on Top Layer And Track (49.444mm,114.786mm)(50.714mm,116.056mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.025mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.989mil|Location2.X=1994.239mil|Location1.Y=4559.509mil|Location2.Y=4570.759mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\lohat\OneDrive\Desktop\School\Cornell\LPC\LPC_Electrical\PCB\Atmega328p_Breakout\Atmega328p_Breakout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.989mil|Location2.X=1994.239mil|Location1.Y=4559.509mil|Location2.Y=4570.759mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.144mm &lt; 0.254mm) Between Pad U1-32(50.206mm,116.742mm) on Top Layer And Track (49.444mm,114.786mm)(50.714mm,116.056mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.144mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
